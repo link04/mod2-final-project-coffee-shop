@@ -1,1 +1,5 @@
 Welcome
+<%= session[:user_id] %>
+<%= form_tag '/logout' do %>
+  <%= submit_tag 'logout' %>
+<% end %>
