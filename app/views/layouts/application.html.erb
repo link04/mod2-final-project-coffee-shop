@@ -11,7 +11,9 @@
 
   <body>
     <header>
-      <h1>navbar</h1>
+      <nav>
+        <%= link_to("Log out", logout_path, method: :delete) if session[:user_id] %>
+      </nav>
     </header>
     <%= yield %>
   </body>
