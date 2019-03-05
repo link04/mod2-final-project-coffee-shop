@@ -4,4 +4,10 @@ class CoffeeShop < ApplicationRecord
 
   validates :name, presence:true, uniqueness:true
 
+  # def self.find_coffee_shop_blogs(user_id)
+  #
+  # end
+
+
+
 end
