@@ -4,3 +4,9 @@
 <h2><%= @user.password %></h2>
 
 <%= link_to('edit', edit_user_path(@user)) %>
+
+<ul>
+  <% @user.blogs.each do |blog| %>
+    <li><%= link_to(blog.title, blog_path(blog)) %></li>
+  <% end %>
+</ul>

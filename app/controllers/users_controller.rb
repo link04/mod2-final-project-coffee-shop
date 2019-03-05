@@ -9,7 +9,9 @@ class UsersController < ApplicationController
     hash = user_params
     hash[:coffee_shop] = CoffeeShop.all.sample
 
+
     @user = User.create(hash)
+    CoffeeShop.all.sample.users << @user
     if @user.valid?
       redirect_to(root_path)
     else

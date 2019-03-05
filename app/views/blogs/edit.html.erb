@@ -1,0 +1,17 @@
+<% if @blog.errors.any? %>
+  <ul>
+  <% @blog.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for @blog do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %> <br>
+  <%= f.label :content %>
+  <%= f.text_area :content %> <br>
+
+  <%= f.submit %>
+<% end %>
