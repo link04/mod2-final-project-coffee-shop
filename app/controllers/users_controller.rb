@@ -1,21 +1,19 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
+  skip_before_action :require_login, only: [:create]
 
   def new
     @user = User.new
   end
 
   def create
-    hash = user_params
-    hash[:coffee_shop] = CoffeeShop.all.sample
-
-
-    @user = User.create(hash)
+    @user = User.create(user_params)
     CoffeeShop.all.sample.users << @user
     if @user.valid?
-      redirect_to(root_path)
+      log_in_user(@user.id)
+      redirect_to(coffee_shops_path)
     else
-      render :new
+      render :_new
     end
   end
 
@@ -24,15 +22,22 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    if @user == @logged_in_user
+      render :edit
+    else
+      redirect_to @user
+      return
+    end
   end
 
   def update
-    @user.update(user_params)
-    if @user.valid?
-      redirect_to(root_path)
-    else
-      render :edit
+    if @user == @logged_in_user
+      @user.update(user_params)
+      if @user.valid?
+        redirect_to(root_path)
+      else
+        render :edit
+      end
     end
   end
 

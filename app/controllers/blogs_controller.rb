@@ -25,11 +25,16 @@ class BlogsController < ApplicationController
   end
 
   def update
-    @blog.update(blog_params)
-    if @blog.valid?
-      redirect_to(root_path)
+    if @blog.user == @logged_in_user
+      @blog.update(blog_params)
+      if @blog.valid?
+        redirect_to(blog_path(@blog))
+      else
+        render :edit
+      end
     else
-      render :edit
+      #flash[:errors] = "Unathorized author."
+      redirect_to(blog_path(@blog))
     end
   end
 

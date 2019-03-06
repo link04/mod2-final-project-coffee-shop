@@ -1,5 +1,38 @@
 <h1><%= @blog.title %></h1>
 <p><%= @blog.content %></p>
-<p>Written by: <%= @blog.user.full_name %></p>
 
-<%= link_to('edit', edit_blog_path(@blog)) %>
+<ul class="blog-meta">
+  <li>Written by: <%= link_to(@blog.user.full_name, user_path(@blog.user)) %></li>
+  <li>Likes:
+    <%= @blog.likes.count %>
+    <%= link_to("<3", likes_path(blog_id: @blog.id ,user_id: @logged_in_user.id), method: :post ) if @blog.like_id(@logged_in_user.id) == 0 %>
+    <%= link_to("</3", like_path( @blog.like_id(@logged_in_user.id) ) , method: :delete ) if @blog.like_id(@logged_in_user.id) > 0 %>
+  </li>
+  <li>Comments:
+    <ul>
+        <% @blog.comments.each do |comment| %>
+          <li><%= comment.content %></li>
+          <%= link_to('Delete', comment_path(comment), method: :delete) if comment.user == @logged_in_user  %>
+        <% end %>
+    </ul>
+  </li>
+</ul>
+
+<% if !!flash[:errors] && flash[:errors].any? %>
+  <ul>
+  <% flash[:errors].each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<div>
+  <%= form_tag comments_path(blog_id: @blog.id), method: :post do %>
+    <%= text_area_tag :content %>
+
+    <%= submit_tag 'Post Comment' %>
+  <% end %>
+</div>
+
+
+<%= link_to('edit', edit_blog_path(@blog)) if @blog.user == @logged_in_user  %>

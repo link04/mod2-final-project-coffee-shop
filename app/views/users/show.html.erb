@@ -3,7 +3,7 @@
 <h2><%= @user.user_name %></h2>
 <h2><%= @user.password %></h2>
 
-<%= link_to('edit', edit_user_path(@user)) %>
+<%= link_to('edit', edit_user_path(@user)) if @logged_in_user == @user %>
 
 <ul>
   <% @user.blogs.each do |blog| %>

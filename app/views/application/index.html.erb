@@ -1,3 +1,6 @@
-Welcome
-<%= session[:user_id] %>
-<%= link_to("Log out", logout_path, method: :delete) if session[:user_id] %>
+Welcome <%= @logged_in_user.full_name if @logged_in_user %>
+<%= link_to("Log in", login_path) if !@logged_in_user %>
+<%= link_to("Sign Up", new_user_path) if !@logged_in_user %>
+
+
+<%= render "users/new" %>

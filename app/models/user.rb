@@ -11,8 +11,5 @@ class User < ApplicationRecord
   validates :user_name, presence:true, uniqueness:true
   validates :password, presence:true
 
-  def self.get_logged_user(user_id)
-    self.find(user_id)
-  end
 
 end
