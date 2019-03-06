@@ -27,9 +27,9 @@
 <% end %>
 
 <div>
-  <%= form_tag comments_path(blog_id: @blog.id), method: :post do %>
-    <%= text_area_tag :content %>
-
+  <%= form_for @comment do |f| %>
+    <%= f.text_area :content  %>
+    <%= f.hidden_field :blog_id , value: @blog.id %>
     <%= submit_tag 'Post Comment' %>
   <% end %>
 </div>
