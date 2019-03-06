@@ -11,7 +11,7 @@
   <li>Comments:
     <ul>
         <% @blog.comments.each do |comment| %>
-          <li><%= comment.content %></li>
+          <li><%= comment.content %> - <%= comment.user.full_name %></li>
           <%= link_to('Delete', comment_path(comment), method: :delete) if comment.user == @logged_in_user  %>
         <% end %>
     </ul>

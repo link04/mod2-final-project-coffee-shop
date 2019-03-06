@@ -6,9 +6,8 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @user = User.get_logged_user(session[:user_id])
     @blog = Blog.create(blog_params)
-    @user.blogs << @blog
+    @logged_in_user.blogs << @blog
     if @blog.valid?
       redirect_to(root_path)
     else

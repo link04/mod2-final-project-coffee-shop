@@ -4,3 +4,7 @@
     <li><%= link_to(blog.title, blog_path(blog)) %></li>
  <% end %>
 </ul>
+
+<%= form_tag new_blog_path, method: :get do %>
+  <%= submit_tag "Write Something!" %>
+<% end %>

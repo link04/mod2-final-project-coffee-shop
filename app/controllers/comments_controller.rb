@@ -11,14 +11,25 @@ class CommentsController < ApplicationController
     end
   end
 
-  def delete
-    
+  def destroy
+    find_comment
+    blog = @comment.blog
+    if @comment.user == @logged_in_user
+      @comment.destroy
+      redirect_to(blog_path(blog))
+    else
+      redirect_to(blog_path(blog))
+    end
   end
 
   private
 
   def comment_params
     params.permit(:content, :blog_id)
+  end
+
+  def find_comment
+    @comment = Comment.find(params[:id])
   end
 
 end
