@@ -7,9 +7,10 @@ class CommentsController < ApplicationController
       flash[:errors] = nil
       redirect_to(blog_path(comment_params[:blog_id]))
     else
+      @popular_blogs = Blog.most_popular_blogs(@logged_in_user)
       @blog = Blog.find(comment_params[:blog_id])
       flash[:errors] = @comment.errors.full_messages
-      render "/blogs/show"
+      render 'blogs/show'
     end
   end
 
