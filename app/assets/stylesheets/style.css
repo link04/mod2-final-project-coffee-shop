@@ -201,7 +201,7 @@ ul, ol {
 
 /* --  Input  -- */
 
-input[type="email"], input[type="password"], input[type="number"], input[type="date"], input[type="url"], input[type="tel"]{
+input[type="email"], input[type="password"], input[type="number"], input[type="date"], input[type="url"], input[type="tel"], .old-textarea{
     height: 40px;
     width: 100%;
     border: none;
@@ -396,7 +396,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
         position: absolute;
         right: -50%;
         top: 0;
-        background-color: #6195FF;
+        background-color: #08c5d1;
         width: 200px;
         -webkit-box-shadow: 0px 5px 5px -5px rgba(53, 64, 82, 0.2);
         box-shadow: 0px 5px 5px -5px rgba(53, 64, 82, 0.2);
@@ -407,6 +407,14 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
         visibility: hidden;
         -webkit-transition: 0.2s all;
         transition: 0.2s all;
+
+    }
+    .dropdown.edit-option {
+      width: 100px;
+      text-align:center;
+      border-radius: 100px;
+      text-align: center;
+      font-size: 22px;
     }
     .main-nav>.has-dropdown>.dropdown {
         top: 100%;
@@ -595,6 +603,21 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 header {
     position: relative;
+}
+
+#home.coffe-shop-blogs {
+  height: 50vh;
+}
+
+#home .home-wrapper-page-title {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 35%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
 }
 
 #home {
@@ -1135,7 +1158,7 @@ header {
 
 .blog .blog-meta li {
     display: inline-block;
-    font-size: 14px;
+    font-size: 17px;
     color: #10161A;
     margin-right: 10px;
 }
@@ -1204,7 +1227,8 @@ header {
 
 .blog-author .media {
     padding: 20px;
-    border: 1px solid #EEE;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
 }
 
 .blog-author .media .media-heading {

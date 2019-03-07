@@ -14,9 +14,9 @@
       <% end %>
       <%= form_tag '/login', class: "row" do %>
         <%= label_tag :user_name %>
-        <%= text_field_tag :user_name, "", class: "signup-text-input" %>
+        <%= text_field_tag :user_name, "", autocomplete:"off", class: "signup-text-input" %>
         <%= label_tag :password %>
-        <%= password_field_tag :password %>
+        <%= password_field_tag :password , "", autocomplete:"off" %>
         <%= submit_tag('login') %>
       <% end %>
     </div>
