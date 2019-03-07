@@ -3,7 +3,7 @@ class Blog < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  validates :title, presence:true, length: { maximum: 50 }
+  validates :title, presence:true, length: { maximum: 150 }
   validates :content, presence:true, length: { maximum: 2000 }
 
   def user_likes(user)
@@ -17,6 +17,12 @@ class Blog < ApplicationRecord
    else
      0
    end
+  end
+
+  def self.most_popular_blogs(user)
+    CoffeeShop.coffee_shop_blogs(user).sort_by do |blog|
+      -blog.likes.count
+    end[0..2]
   end
 
 end

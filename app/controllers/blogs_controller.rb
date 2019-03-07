@@ -16,7 +16,9 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @popular_blogs = Blog.most_popular_blogs(@logged_in_user)
     @comment = Comment.new()
+
   end
 
   def edit

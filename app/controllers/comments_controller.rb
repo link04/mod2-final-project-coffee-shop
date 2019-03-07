@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     else
       @blog = Blog.find(comment_params[:blog_id])
       flash[:errors] = @comment.errors.full_messages
-      render "/blogs/show"
+      render 'blogs/show'
     end
   end
 

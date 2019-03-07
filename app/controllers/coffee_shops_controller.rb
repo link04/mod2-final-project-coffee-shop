@@ -4,8 +4,8 @@ class CoffeeShopsController < ApplicationController
   skip_before_action :require_logout
 
   def index
-    @coffee_shop = User.find(session[:user_id]).coffee_shop
-    @blogs = @coffee_shop.blogs
+    @blogs = CoffeeShop.coffee_shop_blogs(@logged_in_user)
+    @coffee_shop = @logged_in_user.coffee_shop
   end
 
 end

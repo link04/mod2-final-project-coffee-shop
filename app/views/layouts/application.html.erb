@@ -13,7 +13,6 @@
 
    <%# <%=# stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
    <%# #javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 <!-- Bootstrap -->
@@ -22,7 +21,6 @@
 <!-- Owl Carousel -->
 <link type="text/css" rel="stylesheet" href="<%= asset_path('owl.carousel.css')%>">
 <link type="text/css" rel="stylesheet" href="<%= asset_path('owl.theme.default.css')%>">
-
 <!-- Magnific Popup -->
 <link type="text/css" rel="stylesheet" href="<%= asset_path('magnific-popup.css') %>">
 
@@ -43,9 +41,6 @@
 <body>
 	<!-- Header -->
 	<header>
-		<!-- Background Image -->
-
-		<!-- /Background Image -->
 
 		<!-- Nav -->
 		<nav id="nav" class="navbar nav-transparent">
@@ -90,9 +85,7 @@
   						<ul class="dropdown">
                 <li><%= link_to("My Blogs", user_path(@logged_in_user), class: "" ) if @logged_in_user %></li>
                 <li><%= link_to("Edit Profile", edit_user_path(@logged_in_user), class: "" ) if @logged_in_user %></li>
-
                 <li><%= link_to("Log Out", logout_path,  method: :delete ,data: {:confirm => "Are you sure?" } ) if @logged_in_user %></li>
-
   						</ul>
   					</li>
           <% end %>
