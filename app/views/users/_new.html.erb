@@ -1,13 +1,11 @@
-
-<% if @user.errors.any? %>
-  <ul>
-  <% @user.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-  </ul>
-<% end %>
-
 <%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger" role="alert">
+      <p><%= message %></p>
+    </div>
+    <% end %>
+  <% end %>
   <%= f.label :full_name %>
   <%= f.text_field :full_name, autocomplete:"off", class: "signup-text-input" %> <br>
   <%= f.label :user_name %>
@@ -16,5 +14,7 @@
   <%= f.password_field :password %> <br>
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %> <br>
-  <%= f.submit %>
+  <div class="xs-padding">
+    <%= f.submit "Log Me", class: "main-btn"  %>
+  </div>
 <% end  %>
