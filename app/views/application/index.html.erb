@@ -1,6 +1,47 @@
-Welcome <%= @logged_in_user.full_name if @logged_in_user %>
-<%= link_to("Log in", login_path) if !@logged_in_user %>
-<%= link_to("Sign Up", new_user_path) if !@logged_in_user %>
+<section id="home">
+  <!-- Background Image -->
+  <div class="bg-img" style="background-image: url(<%= asset_path('coffee_shop_bg.jpg') %>);">
+    <div class="overlay">
+    </div>
+  </div>
+  <!-- /Background Image -->
+  <div class="home-wrapper">
+    <div class="container">
+      <div class="row">
 
+        <!-- home content -->
+        <div class="col-md-10 col-md-offset-1">
+          <div class="home-content">
+            <h1 class="white-text">Welcome!</h1>
+            <p class="white-text">Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl. Nullam sit amet magna in magna gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere.
+            </p>
+          </div>
+        </div>
+        <!-- /home content -->
+      </div>
+    </div>
+  </div>
+</section>
 
-<%= render "users/new" %>
+<div id="sign_up" class="section md-padding bg-grey">
+<!-- Container -->
+  <div class="container">
+  <!-- Row -->
+    <div class="row">
+    <!-- Section header -->
+      <div class="section-header text-center">
+        <h2 class="title">Sign Up</h2>
+      </div>
+    <!-- /Section header -->
+    <!-- Work -->
+      <div class="col-md-4 col-xs-6 work">
+
+        <%= render "users/new" %>
+
+      </div>
+    <!-- /Work -->
+    </div>
+  <!-- /Row -->
+  </div>
+<!-- /Container -->
+</div>

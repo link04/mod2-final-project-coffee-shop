@@ -1,37 +1,183 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Mod2FinalProjectCoffeeShop</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  </head>
+<title>HTML Template</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <%= link_to(@logged_in_user.full_name, user_path(@logged_in_user), class: "nav-item nav-link" ) if @logged_in_user %>
+   <%# <%=# stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <%# #javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-            <%= link_to("Log out", logout_path, method: :delete, class: "nav-item nav-link text-danger" ) if @logged_in_user %>
-          </div>
-        </div>
-      </nav>
-    </header>
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('bootstrap.min.css') %> ">
 
-    <%= yield %>
+<!-- Owl Carousel -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('owl.carousel.css')%>">
+<link type="text/css" rel="stylesheet" href="<%= asset_path('owl.theme.default.css')%>">
 
-  </body>
+<!-- Magnific Popup -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('magnific-popup.css') %>">
+
+<!-- Font Awesome Icon -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('application.css') %>">
+
+<!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('style.css') %>">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+	<!-- Header -->
+	<header>
+		<!-- Background Image -->
+
+		<!-- /Background Image -->
+
+		<!-- Nav -->
+		<nav id="nav" class="navbar nav-transparent">
+			<div class="container">
+
+				<div class="navbar-header">
+					<!-- Logo -->
+					<div class="navbar-brand">
+						<a href="/">
+              <h1>CoffeeShop</h1>
+							<!-- <img class="logo" src="<%= asset_path('logo.png') %>" alt="logo">
+							<img class="logo-alt" src="<%= asset_path('logo-alt.png') %>" alt="logo"> -->
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Collapse nav button -->
+					<div class="nav-collapse">
+						<span></span>
+					</div>
+					<!-- /Collapse nav button -->
+				</div>
+
+				<!--  Main navigation  -->
+				<ul class="main-nav nav navbar-nav navbar-right">
+					<li class="active"><a href="/">Home</a></li>
+          <% if @logged_in_user  %>
+            <li><%= link_to("New Blog", new_blog_path)  %></li>
+          <% end %>
+          <% if !@logged_in_user && current_page?(root_url) %>
+            <li><%= link_to("Sign Up", '#sign_up')  %></li>
+          <% elsif !@logged_in_user %>
+            <li><%= link_to("Sign Up", '/#sign_up')  %></li>
+          <% end %>
+
+          <% if !@logged_in_user   %>
+            <li><%= link_to("Log In", login_path)  %></li>
+          <% end %>
+          <% if @logged_in_user   %>
+            <li class="has-dropdown">
+              <%= link_to(@logged_in_user.full_name,user_path(@logged_in_user)) %>
+  						<ul class="dropdown">
+                <li><%= link_to("My Blogs", user_path(@logged_in_user), class: "" ) if @logged_in_user %></li>
+                <li><%= link_to("Edit Profile", edit_user_path(@logged_in_user), class: "" ) if @logged_in_user %></li>
+
+                <li><%= link_to("Log Out", logout_path,  method: :delete ,data: {:confirm => "Are you sure?" } ) if @logged_in_user %></li>
+
+  						</ul>
+  					</li>
+          <% end %>
+
+				</ul>
+				<!-- /Main navigation -->
+
+			</div>
+		</nav>
+		<!-- /Nav -->
+
+		<!-- home wrapper -->
+
+		<!-- /home wrapper -->
+	</header>
+
+    		<%= yield %>
+
+	<!-- Footer -->
+	<footer id="footer" class="sm-padding bg-dark">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<!-- footer logo -->
+					<div class="footer-logo">
+						<a href="index.html"><img src="<%= asset_path('logo-alt.png') %>" alt="logo"></a>
+					</div>
+					<!-- /footer logo -->
+
+					<!-- footer follow -->
+					<ul class="footer-follow">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+					</ul>
+					<!-- /footer follow -->
+
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<p>Copyright © 2019. All Rights Reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+					</div>
+					<!-- /footer copyright -->
+
+				</div>
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</footer>
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div id="back-to-top" style="display: none;"></div>
+	<!-- /Back to top -->
+
+	<!-- Preloader -->
+	<div id="preloader" style="display: none;">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- /Preloader -->
+
+	<!-- jQuery Plugins -->
+  <script type="text/javascript" src="<%= asset_path('application.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('jquery.min.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('bootstrap.min.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('owl.carousel.min.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('jquery.magnific-popup.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('main.js') %>"></script>
+
+</body>
+
+
 </html>
