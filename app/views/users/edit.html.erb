@@ -1,12 +1,3 @@
-<% if @user.errors.any? %>
-  <ul>
-  <% @user.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-  </ul>
-<% end %>
-<div class="bg-img" style="background-image: url(<%= asset_path('sad-coffee.jpg') %>);">
-  <div class="overlay">
 <div class="section md-padding">
   <div class="bg-img" style="background-image: url(<%= asset_path('sad-coffee.jpg') %>);">
     <div class="overlay">
