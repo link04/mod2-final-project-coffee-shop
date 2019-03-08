@@ -1579,14 +1579,9 @@ header {
 
 /* -- login -- */
 .center-this-shit {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.login-white-space {
-  height: 100vh;
 }
 
 /* -- blog -- */
@@ -1656,7 +1651,6 @@ header {
 
 #coffee_cup {
   width: 150px;
-  padding-bottom: 10%;
 }
 
 /* --edit user -- */
@@ -1665,10 +1659,6 @@ header {
   height: 90vh;
   background: transparent;
   postion: relative;
-}
-
-.edit-user-form {
-  height: 50vh;
 }
 
 .edit-user-form input[type="text"], .edit-user-form input[type="password"] {
@@ -1867,8 +1857,15 @@ header {
     all: initial;
     all: unset;
 }
+/* -- buttons -- */
+.edit-form-button {
+  padding: 10 0
+}
 
-
+/* -- utils -- */
+.no-padding {
+  padding: 0 0;
+}
 
 /*------------------------------------*\
 	Responsive
