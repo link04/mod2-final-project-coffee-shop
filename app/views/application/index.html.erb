@@ -1,0 +1,51 @@
+<section id="home">
+  <!-- Background Image -->
+  <div class="bg-img" style="background-image: url(<%= asset_path('coffee_shop_bg.jpg') %>);">
+    <div class="overlay">
+    </div>
+  </div>
+  <!-- /Background Image -->
+  <div class="home-wrapper">
+    <div class="container">
+      <div class="row">
+
+        <!-- home content -->
+        <div class="col-md-10 col-md-offset-1">
+          <div class="home-content">
+            <h1 class="white-text">Welcome!</h1>
+            <p class="white-text">Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl. Nullam sit amet magna in magna gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere.
+            </p>
+          </div>
+        </div>
+        <!-- /home content -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="sign_up" class="section md-padding bg-grey">
+<!-- Container -->
+  <div class="container">
+  <!-- Row -->
+    <div class="row container">
+
+    <!-- Work -->
+      <div class="col-md-4 col-xs-6 work container col-md-offset-4">
+        <div class=" text-center">
+          <h2 class="title">Sign Up</h2>
+        </div>
+        <%= render "users/new" %>
+      </div>
+    <!-- /Work -->
+    </div>
+  <!-- /Row -->
+  </div>
+<!-- /Container -->
+</div>
+<% if @user.errors.any? %>
+<script type="text/javascript">
+// <!--
+document.location.hash="#sign_up";
+// -->
+</script>
+<% end %>

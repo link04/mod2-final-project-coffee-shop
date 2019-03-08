@@ -1,0 +1,55 @@
+
+<%= form_for @user do |f| %>
+
+  <!-- display field errors -->
+  <% if @user.errors[:full_name] %>
+    <% @user.errors[:full_name].each do |message| %>
+    <div class="alert alert-danger" role="alert">
+      <p><%= message %></p>
+    </div>
+    <% end %>
+  <% end %>
+
+  <%= f.label :full_name %>
+  <%= f.text_field :full_name, autocomplete:"off", class: "signup-text-input" %> <br>
+
+  <!-- display field errors -->
+  <% if @user.errors[:user_name] %>
+    <% @user.errors[:user_name].each do |message| %>
+    <div class="alert alert-danger" role="alert">
+      <p><%= message %></p>
+    </div>
+    <% end %>
+  <% end %>
+
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name, autocomplete:"off", class: "signup-text-input" %> <br>
+
+  <!-- display field errors -->
+  <% if @user.errors[:password] %>
+    <% @user.errors[:password].each do |message| %>
+    <div class="alert alert-danger" role="alert">
+      <p><%= message %></p>
+    </div>
+    <% end %>
+  <% end %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %> <br>
+
+  <!-- display field errors -->
+  <% if @user.errors[:password_confirmation] %>
+    <% @user.errors[:password_confirmation].each do |message| %>
+    <div class="alert alert-danger" role="alert">
+      <p><%= message %></p>
+    </div>
+    <% end %>
+  <% end %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %> <br>
+
+  <div class="xs-padding">
+    <%= f.submit "Log Me", class: "main-btn"  %>
+  </div>
+<% end  %>
