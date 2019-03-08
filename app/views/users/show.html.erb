@@ -42,7 +42,13 @@
       <div class=" text-center">
           <h1 class="title">Blogs Related Info</h1>
           <h2 ><strong>Actual Blogs: </strong><%=  @user.blogs.count %></h2>
-          <h2><strong>Most Popular: </strong><%= link_to( @user.top_user_blog.title , blog_path(@user.top_user_blog)) %></h2>
+          <h2><strong>Most Popular: </strong>
+            <% if  @user.blogs.count > 0 %>
+              <%= link_to( @user.top_user_blog.title , blog_path(@user.top_user_blog))  %>
+            <% else %>
+              None Yet
+            <% end %>
+          </h2>
       </div>
 
 				<!-- blog -->
