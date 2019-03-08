@@ -1,15 +1,221 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Mod2FinalProjectCoffeeShop</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<title>HTML Template</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+   <%# <%=# stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <%# #javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('bootstrap.min.css') %> ">
+
+<!-- Owl Carousel -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('owl.carousel.css')%>">
+<link type="text/css" rel="stylesheet" href="<%= asset_path('owl.theme.default.css')%>">
+<!-- Magnific Popup -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('magnific-popup.css') %>">
+
+<!-- Font Awesome Icon -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('application.css') %>">
+
+<!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" href="<%= asset_path('style.css') %>">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+	<!-- Header -->
+	<header>
+
+		<!-- Nav -->
+		<nav id="nav" class="navbar nav-transparent">
+			<div class="container">
+
+				<div class="navbar-header">
+					<!-- Logo -->
+					<div class="navbar-brand">
+						<a href="/">
+              <h1>CoffeeShopBlogs</h1>
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Collapse nav button -->
+					<div class="nav-collapse">
+						<span></span>
+					</div>
+					<!-- /Collapse nav button -->
+				</div>
+
+				<!--  Main navigation  -->
+				<ul class="main-nav nav navbar-nav navbar-right">
+					<li class="active"><a href="/">Home</a></li>
+          <% if @logged_in_user  %>
+            <li><%= link_to("New Blog", new_blog_path)  %></li>
+          <% end %>
+          <% if !@logged_in_user && current_page?(root_url) %>
+            <li><%= link_to("Sign Up", '#sign_up')  %></li>
+          <% elsif !@logged_in_user %>
+            <li><%= link_to("Sign Up", '/#sign_up')  %></li>
+          <% end %>
+
+          <% if !@logged_in_user   %>
+            <li><%= link_to("Log In", login_path)  %></li>
+          <% end %>
+          <% if @logged_in_user   %>
+            <li class="has-dropdown">
+              <%= link_to(@logged_in_user.full_name,user_path(@logged_in_user)) %>
+  						<ul class="dropdown">
+                <li><%= link_to(user_path(@logged_in_user) )  do %> My Blogs <i class="fa fa-coffee"></i><% end %></li>
+                <li><%= link_to(edit_user_path(@logged_in_user))  do %>Edit Profile <i class="fa fa-edit"> </i><% end %></li>
+                <li class="dark-brown-palette-bg"><%= link_to( logout_path,  method: :delete ,data: {:confirm => "Are you sure?" } ) do %>Log Out <i class="fa fa-power-off"></i><% end %></li>
+  						</ul>
+  					</li>
+          <% end %>
+
+				</ul>
+				<!-- /Main navigation -->
+
+			</div>
+		</nav>
+		<!-- /Nav -->
+
+		<!-- home wrapper -->
+
+		<!-- /home wrapper -->
+	</header>
+
+    		<%= yield %>
+
+	<!-- Footer -->
+	<footer id="footer" class="bg-dark">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<div class="col-md-12">
+
+
+					<!-- footer follow -->
+					<ul class="footer-follow">
+            <div id="team" class="section ">
+
+
+        			<!-- Row -->
+        			<div class="row">
+        				<!-- Section header -->
+                <div class="col-md-3">
+                  <div class="team" style="background-color:transparent;">
+                    <div class="team-img">
+                    </div>
+                    <div class="team-content">
+                        <h1 style="color:white;">CoffeeShop</h1>
+                    </div>
+                  </div>
+                </div>
+        				<!-- /Section header -->
+                <div class="col-md-4">
+                  <div class="team">
+                    <div class="team-img">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <img class="img-responsive" src="<%= asset_path('myung_kim.jpg') %>" alt="">
+                        </div>
+                        <div class="col-sm-5 team-content">
+                          <h3>Myung Kim</h3>
+                          <span>Web Developer</span>
+                        </div>
+                      </div>
+                      <div class="overlay">
+                        <div class="team-social">
+                          <a href="https://www.linkedin.com/in/myungkim278"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        				<!-- team -->
+                <div class="col-md-4">
+                  <div class="team">
+                    <div class="team-img">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <img class="img-responsive" src="<%= asset_path('maximo_bautista.jpg') %>" alt="">
+                        </div>
+                        <div class="col-sm-5 team-content">
+                          <h3>Maximo Bautista</h3>
+                          <span>Web Developer</span>
+                        </div>
+                      </div>
+
+                      <div class="overlay">
+                        <div class="team-social">
+                          <a href="https://www.linkedin.com/in/maximo-alexander-bautista-480786a6/"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        				<!-- /team -->
+        			</div>
+        			<!-- /Row -->
+
+        		</div>
+        		<!-- /Container -->
+
+        	</div>
+
+
+					<!-- /footer follow -->
+
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<p>Copyright © 2019. All Rights Reserved.</p>
+					</div>
+					<!-- /footer copyright -->
+
+				</div>
+
+			</div>
+			<!-- /Row -->
+
+
+		<!-- /Container -->
+
+	</footer>
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div id="back-to-top" style="display: none;"></div>
+	<!-- /Back to top -->
+
+	<!-- jQuery Plugins -->
+  <script type="text/javascript" src="<%= asset_path('application.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('jquery.min.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('bootstrap.min.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('owl.carousel.min.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('jquery.magnific-popup.js') %>"></script>
+	<script type="text/javascript" src="<%= asset_path('main.js') %>"></script>
+
+</body>
+
+
 </html>

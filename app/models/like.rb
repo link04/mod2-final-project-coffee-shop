@@ -6,4 +6,5 @@ class Like < ApplicationRecord
   validates :user, presence:true
   validates :blog, presence:true
 
+
 end

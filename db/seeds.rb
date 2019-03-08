@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
+Like.all.delete_all
+Comment.all.delete_all
 Blog.all.delete_all
 User.all.delete_all
 CoffeeShop.all.delete_all
@@ -14,18 +18,19 @@ CoffeeShop.all.delete_all
   CoffeeShop.create(name:Faker::Coffee.blend_name)
 end
 10.times do
-  User.create(full_name: Faker::Name.unique.name, user_name: Faker::Internet.email, password: Faker::Alphanumeric.alphanumeric, coffee_shop_id: CoffeeShop.all.sample.id)
+  password = Faker::Alphanumeric.alphanumeric
+  User.create(full_name: Faker::Name.unique.name, user_name: Faker::Internet.email, password: password, password_confirmation: password, coffee_shop_id: CoffeeShop.all.sample.id)
 end
 20.times do
   Blog.create(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph, user_id: User.all.sample.id )
 end
 
 10.times do
-  Comment.create(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph, user_id: User.all.sample.id )
+  Comment.create(content: Faker::Lorem.sentence, user_id: User.all.sample.id, blog_id: Blog.all.sample.id)
 end
 
 20.times do
-  Like.create(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph, user_id: User.all.sample.id )
+  Like.create(user_id: User.all.sample.id, blog_id: Blog.all.sample.id)
 end
 
 
