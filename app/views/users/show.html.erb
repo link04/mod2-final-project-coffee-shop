@@ -31,33 +31,25 @@
       <div class="section-header text-center">
         <h2 ><strong>UserName: </strong><%=  @user.user_name %></h2>
         <h2 ><strong>Actual Coffee Shop: </strong><%=  @user.coffee_shop.name %></h2>
+        <% if @user == @logged_in_user %>
+          <div class="xm-padding  ">
+            <%= link_to(edit_user_path(@user), class:" round-option light-blue-palette-bg") do %>
+              <%=  fa_icon 'edit' %>  Edit Info
+            <% end %>
+          </div>
+        <% end %>
       </div>
-      <% if @user == @logged_in_user %>
-        <div class="xm-padding  text-center">
-          <%= link_to(edit_user_path(@user), class:" round-option light-blue-palette-bg") do %>
-            <%=  fa_icon 'edit' %>  Edit Info
-          <% end %>
-        </div>
-      <% end %>
+
       <div class=" text-center">
           <h1 class="title">Blogs Related Info</h1>
           <h2 ><strong>Actual Blogs: </strong><%=  @user.blogs.count %></h2>
           <h2><strong>Most Popular: </strong>
-<<<<<<< HEAD
             <% if  @user.blogs.count > 0 %>
               <%= link_to( @user.top_user_blog.title , blog_path(@user.top_user_blog))  %>
             <% else %>
               None Yet
             <% end %>
           </h2>
-=======
-             <% if  @user.blogs.count > 0 %>
-              <%= link_to( @user.top_user_blog.title , blog_path(@user.top_user_blog))  %>
-             <% else %>
-               None Yet
-             <% end %>
-           </h2>
->>>>>>> myutwo
       </div>
 
 				<!-- blog -->

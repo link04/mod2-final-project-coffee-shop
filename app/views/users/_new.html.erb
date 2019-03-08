@@ -1,4 +1,6 @@
+
 <%= form_for @user do |f| %>
+
   <!-- display field errors -->
   <% if @user.errors[:full_name] %>
     <% @user.errors[:full_name].each do |message| %>

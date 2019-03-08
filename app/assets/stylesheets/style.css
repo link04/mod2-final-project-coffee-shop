@@ -43,6 +43,11 @@ Table OF Contents
 
 
 /* -- typography -- */
+::placeholder {
+ color: rgba(#354052, 0.55);
+
+
+}
 .round-option {
     padding: 20px 20px;
     border-radius: 50px;
@@ -246,32 +251,29 @@ ul, ol {
 
 /* --  Input  -- */
 
-input[type="email"], input[type="password"], input[type="password"] , input[type="number"], input[type="date"], input[type="url"], input[type="tel"], .old-textarea{
+input[type="email"], input[type="password"], input[type="text"] , input[type="number"], input[type="date"], input[type="url"], input[type="tel"], textarea{
     height: 40px;
     width: 100%;
     border: none;
-	  background: none;
+    background: none;
     border-bottom: 2px solid #08c5d1;
     margin-bottom: 20px;
-    color: #354052;
+    color: black;
     padding: 0px 10px;
     opacity: 0.5;
     resize: none;
 }
-
-.signup-text-input{
-
-  margin-bottom: 20px;
-  height: 40px;
-  width: 100%;
-  border: none;
-  background: #F4F4F4;
-  border-bottom: 2px solid #08c5d1;
-  color: #354052;
-  padding: 0px 10px;
-  opacity: 0.5;
-  -webkit-transition: 0.2s border-color, 0.2s opacity;
-  transition: 0.2s border-color, 0.2s opacity;
+input[type="text"].backgroundless-inputs, input[type="password"].backgroundless-inputs{
+    height: 40px;
+    width: 100%;
+    border: none;
+    background: none;
+    border-bottom: 2px solid #08c5d1;
+    margin-bottom: 20px;
+    color: #FFF;
+    padding: 0px 10px;
+    opacity: 0.5;
+    resize: none;
 }
 
 textarea {
@@ -1649,7 +1651,7 @@ header {
 }
 
 .blank-textarea {
-  height: 75vh;
+  height: 40vh;
 }
 
 #form7 {

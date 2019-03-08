@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'application#index'
-  resources :likes
-  resources :comments
-  resources :blogs
-  resources :users
+  resources :likes, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
+  resources :blogs, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :users, only: [:new, :create, :show, :edit, :update]
   resources :coffee_shops, only: [:index]
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

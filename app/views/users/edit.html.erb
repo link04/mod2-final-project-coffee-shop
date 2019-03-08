@@ -1,70 +1,66 @@
-<div class="section md-padding">
+<div class="section sm-padding">
   <div class="bg-img" style="background-image: url(<%= asset_path('sad-coffee.jpg') %>);">
     <div class="overlay">
     </div>
   </div>
   <div class="container">
-    <div class="row container">
+        <div class="col-md-4 col-md-offset-4">
+          <div class=" text-center">
+            <h2 class="title white-text">Edit Profile</h2>
+          </div>
+          <%= form_for @user do |f| %>
+            <!-- display field errors -->
+            <% if @user.errors[:full_name]%>
+              <% @user.errors[:full_name].each do |message| %>
+              <div class="alert alert-danger" role="alert">
+                <p><%= message %></p>
+              </div>
+              <% end %>
+            <% end %>
 
+              <%= f.label :full_name ,class:" white-text" %>
+              <%= f.text_field :full_name, class:"backgroundless-inputs" ,autocomplete:"off"%> <br>
 
-        <div class="edit-user-form text-center">
-          <div class="col-md-4 col-md-offset-4">
-            <%= form_for @user do |f| %>
               <!-- display field errors -->
-              <% if @user.errors[:full_name] %>
-                <% @user.errors[:full_name].each do |message| %>
+              <% if @user.errors[:user_name] %>
+                <% @user.errors[:user_name].each do |message| %>
                 <div class="alert alert-danger" role="alert">
                   <p><%= message %></p>
                 </div>
                 <% end %>
               <% end %>
 
-                <%= f.label :full_name %>
-                <%= f.text_field :full_name , autocomplete:"off"%> <br>
+              <%= f.label :user_name ,class:" white-text" %>
+              <%= f.text_field :user_name ,class:"backgroundless-inputs", autocomplete:"off"%> <br>
 
-                <!-- display field errors -->
-                <% if @user.errors[:user_name] %>
-                  <% @user.errors[:user_name].each do |message| %>
-                  <div class="alert alert-danger" role="alert">
-                    <p><%= message %></p>
-                  </div>
-                  <% end %>
+              <!-- display field errors -->
+              <% if @user.errors[:password] %>
+                <% @user.errors[:password].each do |message| %>
+                <div class="alert alert-danger" role="alert">
+                  <p><%= message %></p>
+                </div>
                 <% end %>
+              <% end %>
 
-                <%= f.label :user_name %>
-                <%= f.text_field :user_name , autocomplete:"off"%> <br>
+              <%= f.label :password ,class:" white-text" %>
+              <%= f.password_field :password ,class:"backgroundless-inputs" %> <br>
 
-                <!-- display field errors -->
-                <% if @user.errors[:password] %>
-                  <% @user.errors[:password].each do |message| %>
-                  <div class="alert alert-danger" role="alert">
-                    <p><%= message %></p>
-                  </div>
-                  <% end %>
+              <!-- display field errors -->
+              <% if @user.errors[:password_confirmation] %>
+                <% @user.errors[:password_confirmation].each do |message| %>
+                <div class="alert alert-danger" role="alert">
+                  <p><%= message %></p>
+                </div>
                 <% end %>
+              <% end %>
 
-                <%= f.label :password %>
-                <%= f.password_field :password %> <br>
+              <%= f.label :password_confirmation ,class:" white-text" %>
+              <%= f.password_field :password_confirmation ,class:"backgroundless-inputs"%> <br>
 
-                <!-- display field errors -->
-                <% if @user.errors[:password_confirmation] %>
-                  <% @user.errors[:password_confirmation].each do |message| %>
-                  <div class="alert alert-danger" role="alert">
-                    <p><%= message %></p>
-                  </div>
-                  <% end %>
-                <% end %>
-
-                <%= f.label :password_confirmation %>
-                <%= f.password_field :password_confirmation %> <br>
-
-              <div class="sm-padding">
-                <%= f.submit 'Edit Me!', class: 'main-btn' %>
-              </div>
-            <% end %>
-          </div>
+            <div class="sm-padding">
+              <%= f.submit 'Edit Me!', class: 'main-btn' %>
+            </div>
+          <% end %>
         </div>
-
-    </div>
   </div>
 </div>
