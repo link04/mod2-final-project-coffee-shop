@@ -1,12 +1,105 @@
-<h1><%= @user.full_name %></h1>
-<h2><%= @user.coffee_shop.name %></h2>
-<h2><%= @user.user_name %></h2>
-<h2><%= @user.password %></h2>
 
-<%= link_to('edit', edit_user_path(@user)) if @logged_in_user == @user %>
+<section id="home" class="coffe-shop-blogs">
+  <!-- Background Image -->
+  <div class="bg-img" style="background-image: url(<%= asset_path("user_bg_#{rand(1..5)}.jpg") %>);">
+    <div class="overlay">
+    </div>
+  </div>
+  <!-- /Background Image -->
+  <div class="home-wrapper-page-title" >
+    <div class="container">
+      <div class="row">
 
-<ul>
-  <% @user.blogs.each do |blog| %>
-    <li><%= link_to(blog.title, blog_path(blog)) %></li>
-  <% end %>
-</ul>
+        <!-- home content -->
+        <div class="col-md-10 col-md-offset-1">
+          <div class="home-content">
+            <h1 class="white-text"><%= @user.full_name %></h1>
+          </div>
+        </div>
+        <!-- /home content -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="user_blogs" class="section sm-padding bg-grey">
+<!-- Container -->
+  <div class="container">
+  <!-- Row -->
+    <div class="row">
+    <!-- Section header -->
+      <div class="section-header text-center">
+        <h2 ><strong>UserName: </strong><%=  @user.user_name %></h2>
+        <h2 ><strong>Actual Coffee Shop: </strong><%=  @user.coffee_shop.name %></h2>
+      </div>
+      <% if @user == @logged_in_user %>
+        <div class="xm-padding  text-center">
+          <%= link_to(edit_user_path(@user), class:" round-option light-blue-palette-bg") do %>
+            <%=  fa_icon 'edit' %>  Edit Info
+          <% end %>
+        </div>
+      <% end %>
+      <div class=" text-center">
+          <h1 class="title">Blogs Related Info</h1>
+          <h2 ><strong>Actual Blogs: </strong><%=  @user.blogs.count %></h2>
+          <h2><strong>Most Popular: </strong><%= link_to( @user.top_user_blog.title , blog_path(@user.top_user_blog)) %></h2>
+      </div>
+
+				<!-- blog -->
+        <% @user.blogs.reverse.each do |blog| %>
+				<div class="col-md-12">
+					<div class="blog">
+						<div class="blog-img">
+							<img class="img-responsive" src="./img/blog1.jpg" alt="">
+						</div>
+						<div class="blog-content">
+                <div class="row">
+                  <div class="col-md-10 text-left">
+                    <h2><%= link_to( truncate(blog.title, length: 90), blog_path(blog)) %></h2>
+                  </div>
+                  <div class="col-md-2 text-right">
+                    <% if blog.user == @logged_in_user %>
+                    <ul>
+                      <li class="has-dropdown">
+                        <i class="fa fa-ellipsis-h"></i>
+            						<ul class="dropdown edit-option" >
+                          <li>
+                            <%= link_to(edit_blog_path(blog)) do %>
+                              <%=  fa_icon 'edit' %>  Edit
+                            <% end %>
+                          </li>
+            						</ul>
+            					</li>
+                    </ul>
+                    <% end %>
+                  </div>
+
+                </div>
+							<p><%=  truncate(blog.content, length: 110)   %></p>
+
+              <div class="col-md-4">
+                <%= link_to("Read more", blog_path(blog)) %>
+              </div>
+              <div class="col-md-8">
+                <ul class="blog-meta text-right">
+                  <% if blog.like_id(@logged_in_user.id) == 0 %>
+                  <li><i class="fa fa-heart"></i></i><%= blog.likes.count  %></li>
+                  <% elsif blog.like_id(@logged_in_user.id) > 0 %>
+                  <li><i class="fa fa-heart " style="color:red"></i></i><%= blog.likes.count %></li>
+                  <% end %>
+                  <li><i class="fa fa-comments"></i></i><%= blog.comments.count %></li>
+                  <li><i class="fa fa-clock-o"></i><%= blog.created_at.in_time_zone("Eastern Time (US & Canada)").strftime(" %b %dth %Y")  %></li>
+                  <li><i class="fa fa-user"></i><%= link_to(blog.user.full_name,user_path(blog.user)) %> </li>
+                </ul>
+              </div>
+						</div>
+					</div>
+				</div>
+        <% end %>
+				<!-- /blog -->
+    <!-- /Work -->
+    </div>
+  <!-- /Row -->
+  </div>
+<!-- /Container -->
+</div>

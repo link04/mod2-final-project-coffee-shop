@@ -11,5 +11,11 @@ class User < ApplicationRecord
   validates :user_name, presence:true, uniqueness:true
   validates :password, presence:true
 
+  def top_user_blog
+    self.blogs.select do |blog|
+      blog.likes.count
+    end.first
+  end
+
 
 end

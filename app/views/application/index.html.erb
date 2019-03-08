@@ -45,3 +45,10 @@
   </div>
 <!-- /Container -->
 </div>
+<% if @user.errors.any? %>
+<script type="text/javascript">
+// <!--
+document.location.hash="#sign_up";
+// -->
+</script>
+<% end %>

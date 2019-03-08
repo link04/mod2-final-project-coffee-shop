@@ -43,6 +43,45 @@ Table OF Contents
 
 
 /* -- typography -- */
+.round-option {
+    padding: 20px 20px;
+    border-radius: 50px;
+}
+.light-blue-palette-bg{
+  background-color:#08c5d1;
+  color:white;
+}
+.light-blue-palette{
+  color:#08c5d1;
+}
+
+.dark-brown-palette-bg{
+  background-color :#430c05;
+}
+.dark-brown-palette{
+  color:#430c05;
+}
+
+.dark-blue-palette-bg{
+  background-color:#00353f;
+}
+.dark-blue-palette{
+  color:#00353f;
+}
+
+.light-orange-palette-bg{
+  background-color: #d46f4d;
+}
+.light-orange-palette{
+  color:#d46f4d;
+}
+
+.light-yellow-palette-bg{
+  background-color: #ffbf66;
+}
+.light-yellow-palette{
+  color:#ffbf66;
+}
 
 body {
     font-family: 'Amatic SC', cursive;
@@ -133,6 +172,11 @@ ul, ol {
 .sm-padding {
     padding-top: 60px;
     padding-bottom: 60px;
+}
+
+.xm-padding {
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 
@@ -1042,7 +1086,7 @@ header {
 .team {
     position: relative;
     background-color: #F4F4F4;
-    padding: 40px 20px;
+    padding: 20px 20px;
     margin: 15px 0px;
 }
 
@@ -1065,7 +1109,7 @@ header {
 
 .team-img {
     position: relative;
-    margin-bottom: 20px;
+
     z-index: 11;
 }
 

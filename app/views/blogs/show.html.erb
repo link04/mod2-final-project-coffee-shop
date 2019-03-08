@@ -82,8 +82,18 @@
 
         <!-- blog comments -->
         <div class="blog-comments">
-          <h3 class="title"> (<%= @blog.comments.count %>) Comments </h3>
-
+        <div class="row ">
+          <div class="text-left col-md-4">
+            <h3 class="title"> (<%= @blog.comments.count %>) Comments </h3>
+          </div>
+          <div class="text-right col-md-8">
+            <% if @blog.user == @logged_in_user %>
+                <%= link_to(edit_blog_path(@blog)) do %>
+                  <%=  fa_icon 'edit' %>  Edit Blog
+                <% end %>
+            <% end %>
+          </div>
+        </div>
           <!-- comment -->
           <% @blog.comments.each do |comment| %>
             <div class="media">
@@ -104,10 +114,7 @@
               </div>
             </div>
           <% end %>
-
-
           <!-- /comment -->
-
         </div>
         <!-- /blog comments -->
 
@@ -115,19 +122,17 @@
         <div id="comment-form" class="reply-form">
           <h3 class="title">Leave a reply</h3>
             <%= form_for @comment do |f| %>
-              <%= f.text_area :content , autocomplete:"off", class:"old-textarea", placeholder:"Add Your Commment" %>
+              <%= f.text_area :content , required:true ,autocomplete:"off", class:"old-textarea", placeholder:"Add Your Commment" %>
               <% if !!flash[:errors] && flash[:errors].any? %>
                 <% flash[:errors].each do |message| %>
                 <div class="alert alert-danger" role="alert">
                   <p><%= message %></p>
                 </div>
                 <% end %>
-
               <% end %>
               <%= f.hidden_field :blog_id , value: @blog.id %>
               <%= submit_tag 'Submit', class:"main-btn" %>
             <% end %>
-
         </div>
         <!-- /reply form -->
       </div>
@@ -149,25 +154,17 @@
                <%= blog.title %>
             </a>
             <ul class="blog-meta ">
-              <li><%= blog.created_at.in_time_zone("Eastern Time (US & Canada)").strftime(" %b %dth %Y")%></li>
+              <li style="font-size:20px;"><%= blog.created_at.in_time_zone("Eastern Time (US & Canada)").strftime(" %b %dth %Y")%></li>
             </ul>
           </div>
           <!-- /single post -->
         <% end %>
-
       </div>
       <!-- /Posts sidebar -->
-
-      <!-- Tags -->
-
-      <!-- /Tags -->
-
     </aside>
     <!-- /Aside -->
-
   </div>
   <!-- /Row -->
-
 </div>
 <!-- /Container -->
 </div>

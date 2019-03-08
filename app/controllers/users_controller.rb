@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
+
   skip_before_action :require_login, only: [:create]
 
   def new
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
       log_in_user(@user.id)
       redirect_to(coffee_shops_path)
     else
-      render :_new
+      render :template => 'application/index'
     end
   end
 

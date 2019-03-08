@@ -51,8 +51,6 @@
 					<div class="navbar-brand">
 						<a href="/">
               <h1>CoffeeShop</h1>
-							<!-- <img class="logo" src="<%= asset_path('logo.png') %>" alt="logo">
-							<img class="logo-alt" src="<%= asset_path('logo-alt.png') %>" alt="logo"> -->
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -105,7 +103,7 @@
     		<%= yield %>
 
 	<!-- Footer -->
-	<footer id="footer" class="sm-padding bg-dark">
+	<footer id="footer" class="bg-dark">
 
 		<!-- Container -->
 		<div class="container">
@@ -115,21 +113,77 @@
 
 				<div class="col-md-12">
 
-					<!-- footer logo -->
-					<div class="footer-logo">
-						<a href="index.html"><img src="<%= asset_path('logo-alt.png') %>" alt="logo"></a>
-					</div>
-					<!-- /footer logo -->
 
 					<!-- footer follow -->
 					<ul class="footer-follow">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-					</ul>
+            <div id="team" class="section ">
+
+
+        			<!-- Row -->
+        			<div class="row">
+        				<!-- Section header -->
+                <div class="col-md-3">
+                  <div class="team" style="background-color:transparent;">
+                    <div class="team-img">
+                    </div>
+                    <div class="team-content">
+                        <h1 style="color:white;">CoffeeShop</h1>
+                    </div>
+                  </div>
+                </div>
+        				<!-- /Section header -->
+                <div class="col-md-4">
+                  <div class="team">
+                    <div class="team-img">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <img class="img-responsive" src="<%= asset_path('myung_kim.jpg') %>" alt="">
+                        </div>
+                        <div class="col-sm-5 team-content">
+                          <h3>Myung Kim</h3>
+                          <span>Web Developer</span>
+                        </div>
+                      </div>
+                      <div class="overlay">
+                        <div class="team-social">
+                          <a href="https://www.linkedin.com/in/myungkim278"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        				<!-- team -->
+                <div class="col-md-4">
+                  <div class="team">
+                    <div class="team-img">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <img class="img-responsive" src="<%= asset_path('maximo_bautista.jpg') %>" alt="">
+                        </div>
+                        <div class="col-sm-5 team-content">
+                          <h3>Maximo Bautista</h3>
+                          <span>Web Developer</span>
+                        </div>
+                      </div>
+
+                      <div class="overlay">
+                        <div class="team-social">
+                          <a href="https://www.linkedin.com/in/maximo-alexander-bautista-480786a6/"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        				<!-- /team -->
+        			</div>
+        			<!-- /Row -->
+
+        		</div>
+        		<!-- /Container -->
+
+        	</div>
+
+
 					<!-- /footer follow -->
 
 					<!-- footer copyright -->
@@ -152,15 +206,6 @@
 	<!-- Back to top -->
 	<div id="back-to-top" style="display: none;"></div>
 	<!-- /Back to top -->
-
-	<!-- Preloader -->
-	<div id="preloader" style="display: none;">
-		<div class="preloader">
-			<span></span>
-			<span></span>
-		</div>
-	</div>
-	<!-- /Preloader -->
 
 	<!-- jQuery Plugins -->
   <script type="text/javascript" src="<%= asset_path('application.js') %>"></script>
