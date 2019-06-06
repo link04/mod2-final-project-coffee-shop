@@ -49,6 +49,7 @@ bundle install
 
 3. setup your database by running migrations
 
+
 ```
 rails db:migrate
 ```
@@ -58,3 +59,10 @@ rails db:migrate
 ```
 rails s
 ```
+
+## Authors
+
+* **Myung Kim** - [mjk287](https://github.com/mjk287)
+* **Maximo Bautista** - [link04](https://github.com/link04)
+
+
